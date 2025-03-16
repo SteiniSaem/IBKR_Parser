@@ -246,8 +246,8 @@
                             <div class='hover:bg-slate-600 cursor-pointer flex justify-between'>
                                 <!-- svelte-ignore a11y_click_events_have_key_events -->
                                 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-                                 <div class='grow h-8 flex items-center pl-1' onclick={async () => {selectedFile = file}}>
-                                    <p>{getFileName(file)}</p>
+                                 <div class='flex items-center pl-1 overflow-hidden' onclick={async () => {selectedFile = file}}>
+                                    <p class='truncate'>{getFileName(file)}</p>
                                 </div>
                                 <!-- svelte-ignore a11y_click_events_have_key_events -->
                                 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->

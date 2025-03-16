@@ -75,16 +75,16 @@
 
 </script>
 
-<main class="flex-col h-screen p-8">
+<main class="flex-col h-screen px-4 py-2">
 	<div class='flex justify-between'>
 		<div class='flex items-center my-2'>
-			<button class='bg-sky-600 mr-4' onclick={openSelectFileModal}>Select .csv file</button>
+			<button class='bg-slate-700 border border-slate-400 mr-4' onclick={openSelectFileModal}>Select .csv file</button>
 			{#if $csvFile}
 				<p class='text-slate-400 my-4'>{$csvFile}</p>
 			{/if}
 		</div>
 		{#if $csvFile}
-		<div class='flex items-center'><button class='border border-slate-200 bg-slate-700' onclick={() => readCsvFile($csvFile)}>&#8635;</button></div>
+		<div class='flex items-center'><button class='border border-slate-400 bg-slate-700' onclick={() => readCsvFile($csvFile)}>&#8635;</button></div>
 		{/if}
 	</div>
 	<!--<button onclick={() => {readCsvFile($csvFile)}}>Send request</button>-->
@@ -95,10 +95,10 @@
 				<p class='text-slate-400 mt-3'>Les gögn...</p>
 			</div>
 		{:else if trades.length > 0}
-			<div class='w-full border border-slate-300 rounded-lg overflow-auto'>
+			<div class='w-full border border-slate-400 rounded-lg overflow-auto'>
 				<table class='w-full'>
 					<thead>
-						<tr class='text-slate-200'>
+						<tr class='text-slate-300'>
 							<th>Symbol</th>
 							<th>Date</th>
 							<th>Quantity</th>
@@ -124,10 +124,10 @@
 				</table>
 			</div>
 			<div class='flex w-full items-end my-4'>
-				<div class='border border-slate-300 rounded-lg overflow-auto'>
+				<div class='border border-slate-400 rounded-lg overflow-auto'>
 					<table>
 						<thead>
-							<tr class='text-slate-200'>
+							<tr class='text-slate-300'>
 								<th>Symbol</th>
 								<th>Quantity</th>
 								<th>Kaupverð</th>
@@ -141,12 +141,13 @@
 								<td>{line.kaupverd.toLocaleString()}</td>
 							</tr>
 							{/each}
+							<tr class='text-slate-300'>
+								<td></td>
+								<th>Kaupverð samtals:</th>
+								<th>{stockSummary.reduce((a, b) => a + b.kaupverd, 0).toLocaleString()}</th>
+							</tr>
 						</tbody>
 					</table>
-				</div>
-				<div class='flex justify-center text-slate-300 font-bold ml-4'>
-					<p class='mr-3'>Kaupverð samtals:</p>
-					<p>{stockSummary.reduce((a, b) => a + b.kaupverd, 0).toLocaleString()}</p>
 				</div>
 			</div>
 		{/if}
